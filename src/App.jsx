@@ -1,18 +1,23 @@
+import { useState } from "react";
+
 import { CORE_CONCEPTS } from "./data.js";
 import Header from "./components/Header/Header.jsx";
 import CoreConcept from "./components/CoreConcept.jsx";
 import TabButton from "./components/TabButton.jsx";
 
 function App() {
-
-  let selectedTab = "Por favor, seleccione una pestaña";
+  const [selectedTopic, setSelectedTopic] = useState(
+    "Por favor, seleccione una pestaña"
+  );
 
   function handleSelect(selectedButton) {
     // selectedButton => 'Components', 'JSX', 'Props', 'States'
-    selectedTab = selectedButton;
-    console.log("selectedButton", selectedButton);
+    //selectedTab = selectedButton;
+    setSelectedTopic(selectedButton);
   }
-
+  
+  console.log("selectedTopic", selectedTopic);
+  
   return (
     <div>
       <Header />
@@ -48,7 +53,7 @@ function App() {
             <TabButton onSelect={() => handleSelect("props")}>Props</TabButton>
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
-          {selectedTab}
+          {selectedTopic}
         </section>
       </main>
     </div>
